@@ -6,7 +6,7 @@ export const AddExpense = () => {
     return (
         <div className= "flex flex-col gap-2">
             <div className="relative w-full text-xl ">
-                <Link to="/" className="absolute left px-4 py-2 pt-4 ">
+                <Link to="/trip-name/expenses" className="absolute left px-4 py-2 pt-4 ">
                 <ChevronLeft />
                 </Link>
                 <h1 className="text-center font-medium pt-4">Add Expense</h1>
@@ -41,7 +41,7 @@ export const AddExpense = () => {
                     name="Add Expense"
                     variant="ho"
                     isActive={true}
-                    onClick={() => console.log("Button Click Success!")} route={""}   />
+                    onClick={() => console.log("Button Click Success!")} route={"/trip-name/expenses"}   />
                  </div>   
             </div>
     )

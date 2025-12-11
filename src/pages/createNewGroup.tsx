@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "../components/groups-overview/Buttons";
 import {ChevronLeft, Plus}  from 'lucide-react'
+import { useState } from "react";
 
 //do we need to input state here since we're taking in data? - esm
 //import {useState} from "react"
@@ -9,6 +10,24 @@ import {ChevronLeft, Plus}  from 'lucide-react'
 // Consumer components within the Provider's scope can access the context value using useContext
 
 export const CreateNewGroup = () => {
+    //we need to create state to hold the input value
+    const [adventureName, setAdventureName] = useState(""); //state to hold the input value
+    // const navigate = useNavigate();//maybe we need this to route to the next page after creating a group - esm
+    const handleSubmit = () => {
+        //function to handle the form submission
+        
+        console.log("Adventure Name: ", adventureName);
+        //after submitting, we can navigate to the next page
+        //navigate("/trip-name"); //route to the trip name page after creating a group - esm
+    }
+//do we start with fetch here to post the new group to the db? - esm
+    fetch('http://localhost:3000/api/adventure', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: adventureName }), //send the adventure name to the server
+    })
     return (
         <div>
             <div className="relative w-full text-xl ">
