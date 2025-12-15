@@ -1,6 +1,4 @@
 
-import React from "react";
-
 // #3A7FE5
 
 interface ListProps {
