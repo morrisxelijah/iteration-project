@@ -1,17 +1,12 @@
-import express, { Request, Response} from "express";
-import 'dotenv/config';
-import pool from "./server/models/database.ts"; 
-// import { Pool, QueryResult } from 'pg';
-import cors from "cors"
-import apiRouter from'./routes/api';
+import express, { Request, Response, NextFunction} from "express";
 
 const app = express();
-const PORT = 3000; // 5432 this is the port in .env
+const PORT = 3000;
 
-app.use(cors())
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-app.use("/api", apiRouter);
+
+// app.use("/api", apiRouter);
 
 // test server is working by creating an endpoint "test" that asks the db to return the number one ... should work even without any specific tables yet
 app.get("/test", async (req: Response, res: Response) => {
