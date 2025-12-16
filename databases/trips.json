@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Paris",
+    "people": ["Lucy", "Larry", "Bryan", "Roberta"],
+    "budget": 1300
+  },
+  {
+    "name": "Tokyo",
+    "people": ["Elise", "Jordan", "Mei"],
+    "budget": 2000
+  },
+  {
+    "name": "Cartagena",
+    "people": [
+      "Lucy",
+      "Lexie",
+      "Robbi",
+      "Rosie",
+      "Ariana",
+      "Mary-Kay",
+      "Beatrice"
+    ],
+    "budget": 4000
+  },
+  {
+    "name": "Islamabad",
+    "people": ["Mohamed", "Ali", "Mary", "Andre", "Tony"],
+    "budget": 1800
+  }
+]

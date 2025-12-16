@@ -1,4 +1,4 @@
-import { List } from '../components/groups-overview/List';
+import { List } from '../components/List';
 export const Balances = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-3 pb-20 pt-7">

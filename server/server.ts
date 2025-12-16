@@ -1,9 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 
+// Server Setup
 const app = express();
 const PORT = 3000;
 
+// Body Parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -21,14 +23,23 @@ app.use((req: Request, res: Response) => {
 
 // global error handler 500
 interface Error {
-  err: any;
+  log: string;
+  status: number;
+  message: { err: string };
 }
 
-app.use((err: Error, req: Request, res: Response) => {
-  return res.json(err);
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
 // Initialization
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`);
+  console.log(`Listening on port: http://localhost:${PORT}...`);
 });

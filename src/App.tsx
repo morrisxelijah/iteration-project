@@ -1,12 +1,12 @@
-import { Form } from './components/groups-overview/Forms';
-import { Button } from './components/groups-overview/Buttons';
-import { List } from './components/groups-overview/List';
+import Form from './components/Forms';
+// import { Button } from './components/components/Buttons';
+import List from './components/List';
 import { CreateNewGroup } from './pages/createNewGroup';
-import { GroupTripDetails } from './pages/groupTripDetails';
+import GroupTripDetails from './pages/groupTripDetails';
 import { AddExpense } from './pages/addExpense';
 import { Expenses } from './pages/expenses';
 import { Balances } from './pages/balances';
-
+import { useState } from 'react';
 
 const App = () => {
   return (
@@ -14,11 +14,10 @@ const App = () => {
       <div id="title">
         <h1>WalletWise</h1>
       </div>
-      
-      
+      <Form />
     </>
   );
-}
+};
 
 // const App = () => {
 //   return (
