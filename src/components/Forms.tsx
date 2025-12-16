@@ -1,5 +1,7 @@
 import List from './List';
 import trips from '../../databases/trips.json' assert { type: 'json' };
+import GroupTripDetails from '../pages/groupTripDetails';
+import { useState } from 'react';
 
 // Reading JSON file
 const Form = () => {
@@ -21,6 +23,24 @@ const Form = () => {
           );
         })}
       </section>
+    </>
+  );
+};
+
+const Home = () => {
+  const [page, setPage] = useState(<Form />);
+
+  function changePage() {
+    setPage(<GroupTripDetails />);
+    document.getElementById('page-button').style.display = 'none';
+  }
+
+  return (
+    <>
+      <button id="page-button" onClick={changePage}>
+        + Start New Adventure
+      </button>
+      {page}
     </>
   );
 };
@@ -80,7 +100,7 @@ const Form = () => {
 // );
 // }
 
-export default Form;
+export default Home;
 
 // export const Form = () => {
 //     return (
