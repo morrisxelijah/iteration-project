@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Body Styling */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fffbf8;
+  font-weight: bold;
+  justify-content: center;
+}
+
 /* Trips Display */
 .group-trips {
   display: flex;
@@ -5,77 +15,28 @@
   width: 20em;
 }
 
+.group-trips div{
+  margin-top: 1rem;
+}
 /* Buttons */
-button {
+button, #trip-button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: bold;
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: #646cff;
+button:hover, #trip-button:hover {
+  background-color: #646cff;
+  color: white;
+  font-weight: bold;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-:root {
+/* :root {
   font-family: 'Inter', sans-serif;
 } */
 
@@ -256,9 +217,9 @@ a:hover {
 body {
   /* margin: 0;
   /* display: flex; */
-  /* place-items: center; */
-  /* min-width: 320px;
-  min-height: 100vh; */ 
+/* place-items: center; */
+/* min-width: 320px;
+  min-height: 100vh; */
 /* } */
 
 /* h1 {
@@ -279,4 +240,4 @@ body {
   button {
     background-color: #f9f9f9;
   }
-} */ 
+} */

@@ -1,23 +1,92 @@
-import Form from './components/Forms';
-// import { Button } from './components/components/Buttons';
-import List from './components/List';
-import { CreateNewGroup } from './pages/createNewGroup';
-import GroupTripDetails from './pages/groupTripDetails';
-import { AddExpense } from './pages/addExpense';
-import { Expenses } from './pages/expenses';
-import { Balances } from './pages/balances';
+import Trips from './components/Trips';
+import Details from './components/Details';
+import CreateTrip from './components/CreateTrip';
+import Requests from './components/Requests';
 import { useState } from 'react';
 
-const App = () => {
+type Screen = "list" | "create" | "details";  // use in page switcher
+
+const Home = () => {
+  const [page, setPage] = useState(<Trips />);
+
+  function changePage() {
+    setPage(<CreateTrip />);
+    document.getElementById('new-adventure').style.display = 'none';
+  }
+
   return (
     <>
-      <div id="title">
-        <h1>WalletWise</h1>
-      </div>
-      <Form />
+      <button id="new-adventure" onClick={changePage}>
+        + Start New Adventure
+      </button>
+      {page}
     </>
   );
 };
+
+const App = () => {
+  
+
+  const [page, setPage] = useState<Screen>("list");  
+  const [tripID, setTripID] = useState<string | null>(null);
+   
+  // display details for currently selected trip (new or pre-existing)
+  function handleSelectTrip(selectedTripID) {
+    setTripID(selectedTripID);
+    setPage("details");
+  }
+
+  // user clicks the plus button
+  function handleCreateTrip() {
+    setPage("create");
+  }
+
+  // decide which page component to render based on the current page key
+  let content: React.ReactNode;
+  
+  if (page === "create") {  // user wants to create a new trip
+    content = <CreateTrip />;
+  
+  } else if (page === "details") {  // user wants to view a specific trip
+    content = tripID ? <Details /> : <p>No trip selected.</p>;
+  
+  } else {  // default (home)  -->  user is viewing all trips  ;  page === "list"
+    content = (
+      <>
+        <button id="new-adventure" onClick={handleCreateTrip}>
+          + Start New Adventure
+        </button>
+
+        <Trips  />
+      </>
+    )
+  }
+
+  return (
+      <>
+        <div>
+          <h1>WalletWise</h1>
+        </div>
+        {content}
+      </>
+    );
+
+    
+
+    
+
+  
+  // return (
+  //   <>
+  //     <div id="title">
+  //       <h1>WalletWise</h1>
+  //     </div>
+  //     <Home />
+  //   </>
+  // );
+};
+
+export default App;
 
 // const App = () => {
 //   return (
@@ -77,4 +146,3 @@ const App = () => {
 //   );
 // }
 
-export default App;

@@ -1,18 +1,21 @@
 [
   {
-    "name": "Paris",
+    "id": 1,
+    "destination": "Paris",
     "people": ["Lucy", "Larry", "Bryan", "Roberta"],
     "budget": 1300
   },
   {
-    "name": "Tokyo",
+    "id": 2,
+    "destination": "Tokyo",
     "people": ["Elise", "Jordan", "Mei"],
     "budget": 2000
   },
   {
-    "name": "Cartagena",
+    "id": 3,
+    "destination": "Cartagena",
     "people": [
-      "Lucy",
+      "Elaine",
       "Lexie",
       "Robbi",
       "Rosie",
@@ -23,7 +26,8 @@
     "budget": 4000
   },
   {
-    "name": "Islamabad",
+    "id": 4,
+    "destination": "Islamabad",
     "people": ["Mohamed", "Ali", "Mary", "Andre", "Tony"],
     "budget": 1800
   }

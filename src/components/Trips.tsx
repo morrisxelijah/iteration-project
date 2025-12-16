@@ -1,10 +1,7 @@
-import List from './List';
 import trips from '../../databases/trips.json' assert { type: 'json' };
-import GroupTripDetails from '../pages/groupTripDetails';
-import { useState } from 'react';
 
 // Reading JSON file
-const Form = () => {
+const Trips = () => {
   return (
     <>
       <div id="trips-title">
@@ -14,11 +11,15 @@ const Form = () => {
         {trips.map((trip) => {
           return (
             <button>
-              <List
-                title={`Trip to ${trip.name}`}
-                subtitle={`${trip.people.length} members`}
-                amount={trip.budget}
-              />
+              <div id="title">
+                <p>Trip to {trip.destination}</p>
+              </div>
+              <div id="subtitle">
+                <p>{trip.people.length} members</p>
+              </div>
+              <div id="amount">
+                <p>${trip.budget}</p>
+              </div>
             </button>
           );
         })}
@@ -27,23 +28,7 @@ const Form = () => {
   );
 };
 
-const Home = () => {
-  const [page, setPage] = useState(<Form />);
-
-  function changePage() {
-    setPage(<GroupTripDetails />);
-    document.getElementById('page-button').style.display = 'none';
-  }
-
-  return (
-    <>
-      <button id="page-button" onClick={changePage}>
-        + Start New Adventure
-      </button>
-      {page}
-    </>
-  );
-};
+export default Trips;
 
 // Using database
 // const Form = () => {
@@ -99,8 +84,6 @@ const Home = () => {
 //   </>
 // );
 // }
-
-export default Home;
 
 // export const Form = () => {
 //     return (
