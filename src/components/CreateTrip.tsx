@@ -1,8 +1,6 @@
 /* Should write to trips.json and add datat there that will then be re-rendered with the other trips, attaching
 the same functionality as the other buttons have */
-import fs from 'fs/promises';
 import trips from '../../databases/trips.json' assert { type: 'json' };
-import { resolve } from 'path';
 
 const CreateTrip = () => {
   const addTrip = () => {
@@ -13,7 +11,6 @@ const CreateTrip = () => {
       budget: 1200,
     };
     trips.push(newTrip);
-    fs.writeFile('../../datbases/trips.json', JSON.stringify(trips))
   };
 
   return (
