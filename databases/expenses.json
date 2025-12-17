@@ -1,0 +1,60 @@
+[
+    {
+    "id": 0, 
+    "trip_id": 1, 
+    "title": "Groceries", 
+    "payments": [{"name": "Lucy", "amount": 30},{"name": "Lex", "amount": 70}, {"name": "Ann", "amount": 55}, {"name": "John", "amount": 62}], 
+    "total": 217
+    },
+    
+    {
+    "id": 1, 
+    "trip_id": 1, 
+    "title": "Excursions", 
+    "payments": [{"name": "Lucy", "amount": 96},{"name": "Lex", "amount": 233},{"name": "Ann", "amount": 150},{"name": "John", "amount": 300}], 
+    "total": 812
+ },
+
+ {
+     "id": 1, 
+    "trip_id": 1, 
+    "title": "transportation", 
+    "payments": [{"name": "Lucy", "amount": 165},{"name": "Lex", "amount": 199},{"name": "Ann", "amount": 210},{"name": "John", "amount":150}], 
+    "total": 724
+ },
+
+
+    {
+    "id": 1, 
+    "trip_id": 2, 
+    "title": "airbnb", 
+    "payments": [{"name": "Rachael", "amount": 90},{"name": "Mike", "amount": 90}], 
+    "total": 180
+    },
+    
+    {
+    "id": 1, 
+    "trip_id": 2, 
+    "title": "Excursions", 
+    "payments": [{"name": "Rachael", "amount": 90},{"name": "Mike", "amount": 90}], 
+    "total": 400 
+ },
+
+ {
+     "id": 1, 
+    "trip_id": 2, 
+    "title": "transportation", 
+    "payments": [{"name": "Rachael", "amount": 90},{"name": "Mike", "amount": 90}], 
+    "total": 265 
+ },
+
+  {
+     "id": 1, 
+    "trip_id": 2, 
+    "title": "", 
+    "payments": [{"name": "Rachael", "amount": 90},{"name": "Mike", "amount": 90}], 
+    "total": 50
+ }
+
+
+]
