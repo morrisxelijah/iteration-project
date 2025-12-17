@@ -1,73 +1,35 @@
-# React + TypeScript + Vite
+# Architecture Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WalletWise is a full-stack trip expense sharing app built with React (frontend) and Express.js (backend), using PostgreSQL on Supabase for data persistence. The app manages "Adventures" (trip groups) with expenses and balances.
 
-Currently, two official plugins are available:
+- **Frontend**: React 19 + TypeScript + Vite + Tailwind CSS + React Router DOM. Components in `src/components/`, pages in `src/pages/`.
+- **Backend**: Express.js + TypeScript, API routes under `/api`. Database access via `server/models/database.ts` using pg Pool.
+- **Data Flow**: Frontend fetches/sends data via REST API calls to backend, which queries PostgreSQL.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key files: [server.ts](server.ts) (main server), [src/App.tsx](src/App.tsx) (routing), [server/models/database.ts](server/models/database.ts) (DB connection).
 
-## React Compiler
+# Developer Workflows
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Start dev server**: `npm run dev` (Vite) + `npm run server` (Express with tsx watch).
+- **Build**: `npm run build` (TypeScript compile + Vite build).
+- Run both frontend and backend concurrently for full development.
 
-## Expanding the ESLint configuration
+Backend uses `tsx` to run TypeScript directly without pre-compilation.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Project Conventions
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Database Queries**: Use async/await with `pool.query()`. Log queries in [database.ts](server/models/database.ts). Parameters as arrays for prepared statements.
+- **API Endpoints**: RESTful, e.g., `POST /api/adventure` for creating adventures. Use Express middleware: `cors()`, `express.json()`.
+- **Components**: Functional with TypeScript interfaces for props. Extend `ComponentProps` for flexibility (see [Buttons.tsx](src/components/groups-overview/Buttons.tsx)).
+- **Styling**: Tailwind CSS classes directly in JSX. Consistent color scheme (e.g., `#3A7FE5` for primary blue).
+- **Routing**: React Router with nested routes (e.g., `/trip-name/expenses`). Use `Link` for navigation in components.
+- **Error Handling**: Try-catch in async DB operations, send 500 on errors.
+- **Environment**: Use `.env` for secrets (currently hardcoded connection string in [database.ts](server/models/database.ts) - refactor to env).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Examples
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Creating a new adventure: `POST /api/adventure` with `{name}` body, inserts into "Adventures" table.
+- Component props: `interface ListProps { title: string; subtitle: string; amount: number; }`
+- DB query: `await pool.query('SELECT * FROM "Adventures"')`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Focus on trip expense logic: calculate balances, split expenses among members.
