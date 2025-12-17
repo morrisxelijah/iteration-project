@@ -2,7 +2,7 @@
 the full details of the trip, including where to, the people involved, and how paid off it is */
 
 // import { Button } from '../components/components/Buttons';
-import { ChevronLeft, Plus } from 'lucide-react';
+// import { ChevronLeft, Plus } from 'lucide-react';
 // import { Link, Outlet } from 'react-router-dom';
 import trips from '../../databases/trips.json' assert { type: 'json' };
 
@@ -17,7 +17,7 @@ const Details = ({ tripID }) => {
       <p>{trip.people.length} members</p>
       <p>Budget: ${trip.budget}</p>
 
-      <h3>Memebers</h3>
+      <h3>Members</h3>
       <ul>
         {trip.people.map((name) => (
           <li key={name}>{name}</li>

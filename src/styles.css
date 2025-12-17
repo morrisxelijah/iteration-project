@@ -19,7 +19,7 @@ body {
   margin-top: 1rem;
 }
 /* Buttons */
-button, #trip-button {
+button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -30,10 +30,19 @@ button, #trip-button {
   transition: border-color 0.25s;
 }
 
-button:hover, #trip-button:hover {
+button:hover {
   background-color: #646cff;
   color: white;
   font-weight: bold;
+}
+
+#add-trip {
+  display: flex;
+  flex-direction: column;
+  
+  #trip-button {
+    width: 7em;
+  }
 }
 
 /* :root {

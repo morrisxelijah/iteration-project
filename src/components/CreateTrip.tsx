@@ -1,16 +1,21 @@
-/* Should write to trips.json and add datat there that will then be re-rendered with the other trips, attaching
+/* Should write to trips.json and add data there that will then be re-rendered with the other trips, attaching
 the same functionality as the other buttons have */
-import trips from '../../databases/trips.json' assert { type: 'json' };
+import data from '../../databases/trips.json' assert { type: 'json' };
 
 const CreateTrip = () => {
-  const addTrip = () => {
-    const newTrip = {
-      id: 5,
-      destination: 'Maldives',
-      people: ['Emily', 'Amy'],
-      budget: 1200,
-    };
-    trips.push(newTrip);
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const formJSON = Object.fromEntries(formData.entries());
+
+    return data.push({
+      id: data.length + 1,
+      destination: String(formJSON.destination),
+      people: String(formJSON.people).split(','),
+      budget: Number(formJSON.budget),
+    });
   };
 
   return (
@@ -18,17 +23,23 @@ const CreateTrip = () => {
       <div id="create-trip-title">
         <h2>Create Adventure</h2>
       </div>
-
-      <button onClick={addTrip}>Add Trip</button>
-      {/* <form id="add-trip">
-        <label htmlFor="destination">Destination: </label>
-        <input type="text" id="destination" name="destination" required></input>
+      <form id="add-trip" method="post" onSubmit={handleSubmit}>
+        <label>
+          Destination: <input id="destination" name="destination" />
+        </label>
         <br />
-        <label htmlFor="people">People: </label>
-        <input type="text" id="people" name="people" required></input>
+        <label>
+          People: <input id="people" name="people" />
+        </label>
         <br />
-        <input type="submit" value="Add Trip" id="trip-button" onSubmit={addTrip}></input>
-      </form> */}
+        <label>
+          Budget: <input id="budget" name="budget" />
+        </label>
+        <br />
+        <button type="submit" id="trip-button">
+          Add Trip
+        </button>
+      </form>
     </>
   );
 };
