@@ -1,35 +1,17 @@
 /* Should write to trips.json and add datat there that will then be re-rendered with the other trips, attaching
 the same functionality as the other buttons have */
 import fs from 'fs/promises';
-import trips from '../../databases/trips.json' assert { type: 'json' };
-import { resolve } from 'path';
+import data from '../../databases/trips.json' assert { type: 'json' };
 
 const CreateTrip = () => {
-  const addTrip = () => {
-    const newTrip = {
-      id: 5,
-      destination: 'Maldives',
-      people: ['Emily', 'Amy'],
-      budget: 1200,
-    };
-    trips.push(newTrip);
-    fs.writeFile('../../datbases/trips.json', JSON.stringify(trips))
-  };
+  const newTrip = {
+    id: 5,
+    destination: 'Maldives',
+    people: ['Amy', 'Rose'],
+    budget: 1300
+  }
 
-  return (
-    <>
-      <button onClick={addTrip}>Add Trip</button>
-      {/* <form id="add-trip">
-        <label htmlFor="destination">Destination: </label>
-        <input type="text" id="destination" name="destination" required></input>
-        <br />
-        <label htmlFor="people">People: </label>
-        <input type="text" id="people" name="people" required></input>
-        <br />
-        <input type="submit" value="Add Trip" id="trip-button" onSubmit={addTrip}></input>
-      </form> */}
-    </>
-  );
+  
 };
 
 export default CreateTrip;

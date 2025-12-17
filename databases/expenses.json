@@ -36,7 +36,7 @@
     "id": 1, 
     "trip_id": 2, 
     "title": "Excursions", 
-    "payments": [{"name": "Rachael", "amount": 90},{"name": "Mike", "amount": 90}], 
+    "payments": [{"name": "Rachael", "amount": 120},{"name": "Mike", "amount": 120}], 
     "total": 400 
  },
 
@@ -51,9 +51,9 @@
   {
      "id": 1, 
     "trip_id": 2, 
-    "title": "", 
-    "payments": [{"name": "Rachael", "amount": 90},{"name": "Mike", "amount": 90}], 
-    "total": 50
+    "title": "food", 
+    "payments": [{"name": "Rachael", "amount": 90},{"name": "Mike", "amount": 210}], 
+    "total": 300
  }
 
 
