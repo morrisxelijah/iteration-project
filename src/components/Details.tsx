@@ -248,16 +248,16 @@ const Details = ({ tripID, onGoToRequests }: Props) => {
     <header id="trip-head">
       <h2>Trip to {trip.destination}</h2>
       <p>{trip.people.length} members</p>
-      <p>Budget: ${Number(trip.budget).toFixed(2)}</p>
-    </header>
-    <section id="members"><h3>Members</h3><ul className="member-list">{trip.people.map((name) => (<li key={name}>{name}</li>))}</ul></section>
-    <hr />
-    <nav className="content-switch" id="details-mode">
-      <button type="button" id="mode-expenses" onClick={() => toggleMode("expenses")}>Expenses</button>
-      <button type="button" id="mode-balances" onClick={() => toggleMode("balances")}>Balances</button>
-    </nav>
-    <section id="panel">{panel}</section>
-  </main>);
+      <p>Budget: ${trip.budget}</p>
+
+      <h3>Members</h3>
+      <ul>
+        {trip.people.map((name) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 

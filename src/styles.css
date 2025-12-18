@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 
 /* Body Styling */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #fffbf8;
+  background:#d6d0d0;
+  background-size: cover;
   font-weight: bold;
+  display: flex;
+  text-align: center;
   justify-content: center;
 }
 
@@ -13,27 +17,68 @@ body {
   display: flex;
   flex-direction: column;
   width: 20em;
+  gap: 1rem;
+  margin: 1rem;
+  font-optical-sizing: auto;
 }
 
 .group-trips div{
-  margin-top: 1rem;
-}
-/* Buttons */
-button, #trip-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: bold;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  transition-duration: 300ms;
 }
 
-button:hover, #trip-button:hover {
-  background-color: #646cff;
-  color: white;
+/* Buttons */
+button {
+  height:5rem;
+  border-radius: 15px;
+  font-size: 1em;
+  font-family: inherit;
+  border:none;
+  box-shadow: rgba(24, 23, 24, 0.138) 0px 7px 29px 0px;
+}
+
+#trip-btn{
+  padding:0 1rem 0;
+}
+
+#trip-btn:hover{
+  background-color: #7e3fd6;
+  color: #ffffff;
   font-weight: bold;
+}
+
+#trip-info{
+  float: left;
+  text-align: start;
+}
+
+#amount{
+  font-weight: bold;
+  text-align: end;
+  margin-top: 1.7rem;
+}
+
+.create-button{
+  display: flex;
+  justify-content: center;
+  gap:1rem;
+}
+
+.create-button button{
+  width:150px;
+  height: 60px;
+
+  background: linear-gradient(to top left, #7e3fd6,#6210d5 );
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#add-trip {
+  display: flex;
+  flex-direction: column;
+  
+  #trip-button {
+    width: 7em;
+  }
 }
 
 /* :root {

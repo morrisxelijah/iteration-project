@@ -84,10 +84,10 @@ const App = () => {
       <>
         <div className='create-button'>
           <button id="new-adventure" onClick={() => handlePageChange("create")}>
-            + Start New Adventure
+            + New Adventure
           </button>
           <button id="new-request" onClick={() => handlePageChange("request")}>
-            + New Request ($)
+            + New Request
           </button>
         </div>
 
